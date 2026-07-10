@@ -11,7 +11,7 @@ pipeline{
             steps{
                 git branch: 'master' url:'https://github.com/iamsakshithorat/Terraform-Three-Tire-Project-file.git'
             }
-        }yes
+        }
         stage('Terraform Init'){
             steps{
                 sh 'terraform init'
