@@ -2,18 +2,18 @@ pipeline{
     agent any
 
     environment{
-        Access_Key_Id =credentials('access_key_id')
-        Secret_access_key=credentials('secret_access_key')
+        Access_Key_Id = credentials('access_key_id')
+        Secret_access_key = credentials('secret_access_key')
     }
 
     stages{
         stage('Checkout code'){
             steps{
-                git branch: 'master' url:'https://github.com/iamsakshithorat/Terraform-Three-Tire-Project-file.git'
+                git branch: 'master' , url:'https://github.com/iamsakshithorat/Terraform-Three-Tire-Project-file.git'
             }
         }
         stage('Terraform Init'){
-            steps{
+            steps {
                 sh 'terraform init'
             }
         }
@@ -24,20 +24,21 @@ pipeline{
         }
         stage('Terraform apply'){
             steps{
-                sh 'terraform apply -auto--approve'
+                sh 'terraform apply -auto-approve'
             }
         }
     }    
             
-}
-post{
-    success{
-        echo'✅ Pipeline successful — infra updated!'
-    }
-    failure{
-        echo'❌ Pipeline failed. Logs check karo.'
-    }
-    always{
-        cleanWs()
+
+    post{
+      success{
+          echo'✅ Pipeline successful — infra updated!'
+       }
+       failure{
+          echo'❌ Pipeline failed. Logs check karo.'
+       }
+        always{
+           cleanWs()
+       }
     }
 }
