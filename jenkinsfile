@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        Access_Key_Id = credentials('access_key_id')
+        Access_Key_Id = credentials('access-key-id')
         Secret_access_key = credentials('secret_access_key')
     }
 
